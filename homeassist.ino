@@ -25,9 +25,15 @@ byte BitToByte(byte* start) {
   return result;
 }
 
+/*
+	Модуль датчика температуры
+	(самопись)
+	(TODO: в отдельную библиотеку)
+*/
+
 byte dhtData[85];
 int dataIterator;
-  
+
 DHTResult getTemperature() {
   dataIterator = 0;
   //спрашиваем датчик "как дела"
@@ -81,6 +87,12 @@ DHTResult getTemperature() {
   result.CheckSum = checksum;
   return result;
 }
+
+/*
+	Модуль ИК датчика (для пульта)
+	(самопись)
+	(TODO: в отдельную библиотеку)
+*/
 
 byte irdaData[80];
 byte irdaDataIterator = 0;
@@ -151,8 +163,6 @@ void onIrdaPressed(byte data1, byte data2) {
 void onIrdaReleased(byte data1, byte data2) {
   Serial.println((String) "Released " + (int) data1 + (String) " , " + (int) data2);
 }
-
-unsigned long test = 0;
 
 int lastResult = HIGH;
 unsigned long timePassed;
